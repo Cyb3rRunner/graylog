@@ -10,7 +10,7 @@ FEEDDIR="/etc/graylog/feeds"
 convert_feed () {
  echo "Converting $1 to CSV ($2) using delimeter: '$3'"
  i=0
- cat $1 | while read line
+ egrep -v '(^#|^$)' $1 | while read line
  do
   let i++
   echo "$i$3$line" >> $2
